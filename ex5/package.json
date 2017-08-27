@@ -1,0 +1,14 @@
+{
+  "name": "ex5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "filter.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^3.5.0"
+  }
+}
