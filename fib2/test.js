@@ -19,5 +19,8 @@ describe("Fibonnaci numbers", function() {
   it("fib of 20 is 6765", function() {
     assert.equal(fib(20), 6765);
   })
+  it("fib of 50 is 12586269025", function() {
+    assert.equal(fib(50), 12586269025);
+  })
 });
 
