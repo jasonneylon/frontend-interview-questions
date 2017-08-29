@@ -1,36 +1,25 @@
-const memo = {};
-
 function fib(n) {
-  if (memo[n]) {
-    return memo[n];
-  }
-  let returnValue;
   switch(n) {
-    case 0: 
-      returnValue = 0;
-      break;
+    case 0: return 0
     case 1: return 1
-      returnValue = 1;
-      break;
-    default: 
-      returnValue = fib(n-1) + fib(n-2);
+    default: return  fib(n-1) + fib(n-2);
   }
-  memo[n] = returnValue;
-  return returnValue;
 }
 
-// function memo(fn) {
-//   const memory = {};
+function memo(fn) {
+  const m = {};
 
-//   return function() {
-//     if (memory[args[0]]) {
-//       return (args[0]);
-//     }
-//     const result = fn(args);
-//     memory[args[0]] = result;
-//     return result;
-//   }
-// }
+  return function() {
+    const memory = m;
+    if (memory[arguments[0]]) {
+      return memory[arguments[0]];
+    }
+    const result = fn.apply(this, arguments);
+    memory[arguments[0]] = result;
+    return result;
+  }
+}
 
+fib = memo(fib);
 
 module.exports.fib = fib;
