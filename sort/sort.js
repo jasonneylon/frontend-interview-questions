@@ -27,7 +27,7 @@ function selectionSort(arr) {
   return arr;
 }
 
-
+// shifty implementation
 function mergeHalves(sortedLeft, sortedRight) {
   const sortedArray = [];
   let leftItem = sortedLeft.shift();
@@ -44,16 +44,29 @@ function mergeHalves(sortedLeft, sortedRight) {
   return sortedArray;
 }
 
+// array index implementation
+//
+function mergeHavles(left, right) {
+  let indexLeft = 0;
+  let indexRight = 0;
+  const result = [];
+  while (indexLeft < left.length, indexRight < right.length) {
+    const smallest = left[indexLeft] < right[indexRight] ? left[indexLeft++] : right[indexRight++];
+    result.push(smallest);
+  }
+  return result;
+}
+
+
+
 function mergeSort(arr) {
   if (arr.length <= 1) {
     return arr;
   }
-  const midpoint = (arr.length / 2);
+  const midpoint = Math.floor(arr.length / 2);
   const left = arr.slice(0, midpoint);
   const right = arr.slice(midpoint);
-  const sortedLeft = mergeSort(left);
-  const sortedRight = mergeSort(right);
-  return mergeHalves(sortedLeft, sortedRight);
+  return mergeHalves(mergeSort(left), mergeSort(right));
 }
 
 
