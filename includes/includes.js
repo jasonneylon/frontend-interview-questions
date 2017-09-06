@@ -11,4 +11,27 @@ function includes(arr, item) {
   return includes(searchSpace, item);
 }
 
+
+function binarySearch(arr, item, leftIndex, rightIndex) {
+  const midIndex = Math.floor((rightIndex + leftIndex) / 2)
+  const current = arr[midIndex];
+  if (current === item) {
+    return midIndex;
+  }
+  if (rightIndex < leftIndex) {
+    return -1;
+  }
+
+  if (current < item) {
+    return binarySearch(arr, item, (midIndex + 1), rightIndex) 
+  } else {
+    return binarySearch(arr, item, leftIndex, (midIndex - 1)); 
+  }
+}
+
+function includes(arr, item) {
+  const index = binarySearch(arr, item, 0, (arr.length-1));
+  return (index !== -1);
+}
+
 module.exports.includes = includes;
